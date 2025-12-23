@@ -1,7 +1,5 @@
+
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
 - main
@@ -10,6 +8,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
@@ -17,3 +17,17 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+# Create GitHub release with a new tag
+- task: GitHubRelease@1
+  displayName: 'Create GitHub Release'
+  inputs:
+    gitHubConnection: 'Benson117'              # Service connection name to GitHub (OAuth/PAT)
+    repositoryName: 'your-github-org/your-repo' # Format: owner/repo
+    action: 'create'
+    tagSource: 'manual'                         # Ask task to create the tag
+    tag: 'v$(Build.BuildId)'                    # Tag name to create
+    target: '$(Build.SourceVersion)'            # Commit SHA to tag (the pipeline’s source commit)
+    title: 'Release v$(Build.BuildId)'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
