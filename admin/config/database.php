@@ -1,10 +1,10 @@
 <?php
 // config/database.php
 class Database {
-    private $host = "sql200.infinityfree.com";
-    private $db_name = "if0_40792688_portfolio_db";
-    private $username = "if0_40792688"; // Change as needed
-    private $password = "f74I1Dzv7lp2S9s"; // Change as needed
+    private $host = "tcp:tbserver2025.database.windows.net";
+    private $db_name = "TBportfolio_db";
+    private $username = "CloudSA219c14b7"; // Change as needed
+    private $password = "Tanaka117"; // Change as needed
     public $conn;
 
     public function getConnection() {
