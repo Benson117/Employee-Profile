@@ -2,7 +2,7 @@
 // config/database.php
 
 class Database {
-    private $server = "tcp:tbserver2025.database.windows.net,1433";
+    private $server = "tbserver2025.database.windows.net,1433";
     private $database = "TBportfolio_db";
     private $username = "CloudSA219c14b7";
     private $password = "Tanaka117";
